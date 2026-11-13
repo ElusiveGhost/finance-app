@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Мой финансовый помощник</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Внешние библиотеки (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js"></script>
+</head>
+<body>
+    <!-- Экран блокировки -->
+    <div id="lock" class="lock-screen">
+        <h2>Введите пароль</h2>
+        <input type="password" id="pin-input" inputmode="numeric" pattern="[0-9]*" maxlength="20" autocomplete="off">
+        <button id="pin-btn">Разблокировать</button>
+        <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px; align-items: center;">
+            <button id="restore-btn-lock" style="background: #333; color: white; border: 1px solid #555; font-size: 14px; padding: 8px 16px; border-radius: 8px; cursor: pointer;">📂 Восстановить из бэкапа</button>
+            <button id="reset-db-btn" style="background: transparent; color: #ff5252; border: 1px solid #ff5252; font-size: 12px; padding: 8px 16px; border-radius: 8px; cursor: pointer;">Забыли пароль? Сбросить всё</button>
+        </div>
+        <input type="file" id="import-file-lock" accept=".enc" style="display: none;">
+    </div>
+
+    <!-- Основное приложение -->
+    <div id="app" class="hidden">
+        <div class="top-bar">
+            <h1>Мой финансовый помощник</h1>
+        </div>
+        <nav class="top-nav">
+            <button data-tab="расходы" class="active">Расходы</button>
+            <button data-tab="доходы">Доходы</button>
+            <button data-tab="календарь">Календарь</button>
+            <button data-tab="отчёт">Отчёт</button>
+            <button data-tab="планер">Планер</button>
+        </nav>
+        <main id="main-content">
+            <p style="text-align: center; color: #888; margin-top: 50px;">Загрузка...</p>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
